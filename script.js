@@ -26,3 +26,12 @@ const calculate = () => {
     // display the mean value
     document.querySelector("#mean").textContent = mean;
 };
+
+
+// learn median calculation
+const testArr1 = [1, 2, 3, 4, 5];
+const testArr2 = [1, 2, 3, 4, 5, 6];
+const isEven = testArr2.length % 2 === 0;
+console.log(isEven);
+const oddListMedian = testArr1[Math.floor(testArr1.length/2)];
+console.log(oddListMedian);
