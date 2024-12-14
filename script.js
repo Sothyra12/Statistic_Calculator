@@ -13,6 +13,15 @@ const getMedian = (array) => {
     : sorted[Math.floor(sorted.length / 2)];
 };
 
+const getMode = (array) => {
+  const counts = {};
+  array.forEach(el => {
+    // assignment = condition ? exprIfTrue : exprIfFalse
+    counts[el] = counts[el] ? counts[el] + 1 : 1;
+  });
+  return counts;
+};
+
 const calculate = () => {
   const value = document.querySelector("#number").value;
 
@@ -26,8 +35,10 @@ const calculate = () => {
   const numbers = array.map((el) => Number(el)).filter((el) => !isNaN(el));
 
   const mean = getMean(numbers);
+  const median = getMedian(numbers);
   // display the mean value
   document.querySelector("#mean").textContent = mean;
+  document.querySelector("#median").textContent = median;
 };
 
 // Example of the median logic
