@@ -19,9 +19,11 @@ const getMode = (array) => {
     // assignment = condition ? exprIfTrue : exprIfFalse
     counts[el] = counts[el] ? counts[el] + 1 : 1;
   });
+  // new Set() creates a new object with unique values
   if (new Set(Object.values(counts)).size === 1) {
     return null;
   }
+  const highest = Object.keys(counts).sort((a,b) => counts[b] - counts[a])[0];
 };
 
 const calculate = () => {
