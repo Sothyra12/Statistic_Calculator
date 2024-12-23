@@ -44,10 +44,13 @@ const getVariance = (array) => {
 
 const getStandardDeviation = (array) => {
   const variance = getVariance(array);
+  // const standardDeviation = Math.pow(variance, 1/2);
+  const standardDeviation = Math.sqrt(variance);
+  return standardDeviation;
 };
 
 const calculate = () => {
-  const value = document.querySelector("#number").value;
+  const value = document.querySelector("#numbers").value;
 
   // split() takes a string or regExp and splits it into an array of strings
   const array = value.split(/,\s*/g);
@@ -56,32 +59,34 @@ const calculate = () => {
   // Number() converts the string into a number of a current input value
   // filter() out the inputs that are not numbers
   // use the isNaN() function to check if the input is not a number
-  const numbers = array.map((el) => Number(el)).filter((el) => !isNaN(el));
+  const numbers = array.map((el) => Number(el)).filter(el => !isNaN(el));
 
   const mean = getMean(numbers);
   const median = getMedian(numbers);
   const mode = getMode(numbers);
   const range = getRange(numbers);
   const variance = getVariance(numbers);
+  const standardDeviation = getStandardDeviation(numbers);
   // display the mean value
   document.querySelector("#mean").textContent = mean;
   document.querySelector("#median").textContent = median;
   document.querySelector("#mode").textContent = mode;
   document.querySelector("#range").textContent = range;
   document.querySelector("#variance").textContent = variance;
+  document.querySelector("#standardDeviation").textContent = standardDeviation;
 };
 
 // Example of the median logic
-const logic = () => {
-  const testArr1 = [1, 2, 3, 4, 5];
-  const testArr2 = [1, 2, 3, 4, 5, 6];
-  const isEven = testArr2.length % 2 === 0;
-  console.log(isEven);
-  const oddListMedian = testArr1[Math.floor(testArr1.length / 2)];
-  console.log(oddListMedian);
-  const evenListMedian = getMean([
-    testArr2[testArr2.length / 2 - 1],
-    testArr2[testArr2.length / 2],
-  ]);
-  console.log(evenListMedian);
-};
+// const logic = () => {
+//   const testArr1 = [1, 2, 3, 4, 5];
+//   const testArr2 = [1, 2, 3, 4, 5, 6];
+//   const isEven = testArr2.length % 2 === 0;
+//   console.log(isEven);
+//   const oddListMedian = testArr1[Math.floor(testArr1.length / 2)];
+//   console.log(oddListMedian);
+//   const evenListMedian = getMean([
+//     testArr2[testArr2.length / 2 - 1],
+//     testArr2[testArr2.length / 2],
+//   ]);
+//   console.log(evenListMedian);
+// };
